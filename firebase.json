@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "public": "dist/jk-app",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
