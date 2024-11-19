@@ -5,6 +5,7 @@ import { NoAuthGuard } from './guards/no-auth.guard';
 import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
+   { path: '', pathMatch: 'full', redirectTo: 'home' },
   {
     path: '',
     canActivate: [NoAuthGuard],
