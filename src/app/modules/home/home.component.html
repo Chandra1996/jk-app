@@ -1,0 +1,61 @@
+<div class="flex justify-center items-center min-h-screen bg-blue-50">
+    <!-- Responsive container with margin-top and margin-bottom -->
+    <div class="w-full max-w-5xl p-8 space-y-8 bg-transparent sm:bg-white sm:shadow-lg rounded-2xl mt-12 mb-12">
+        <!-- Welcome Section -->
+        <h2 class="text-3xl font-bold text-center text-gray-700">Welcome to JK Web App</h2>
+        <p class="text-center text-gray-600">
+            Streamline document management and gain insights effortlessly with our Q&A platform.
+        </p>
+
+        <!-- Admin Mode Toggle -->
+        <div class="text-gray-600 font-medium w-full flex justify-center">
+            <mat-slide-toggle [color]="'primary'" (change)="toggleCompleted($event)" [checked]="isAdmin">
+                Admin Mode
+            </mat-slide-toggle>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Document Management -->
+            <div
+                class="flex flex-col items-center justify-center p-6 bg-green-100 shadow-lg rounded-xl hover:bg-green-200 transition">
+                <mat-icon class="text-green-500 mb-4">folder</mat-icon>
+                <h3 class="text-xl font-semibold text-gray-700">Document Management</h3>
+                <p class="text-gray-600 text-sm text-center">Upload and manage your documents with ease.</p>
+                <button mat-raised-button color="primary" routerLink="/manage-documents" class="mt-4">
+                    Manage Documents
+                </button>
+            </div>
+
+            <!-- Q&A Interface -->
+            <div
+                class="flex flex-col items-center justify-center p-6 bg-blue-100 shadow-lg rounded-xl hover:bg-blue-200 transition">
+                <mat-icon class="text-blue-500 mb-4">question_answer</mat-icon>
+                <h3 class="text-xl font-semibold text-gray-700">Q&A Interface</h3>
+                <p class="text-gray-600 text-sm text-center">Ask questions and get relevant answers instantly.</p>
+                <button mat-raised-button color="primary" routerLink="/ask-question" class="mt-4">
+                    Go to Q&A
+                </button>
+            </div>
+
+            <!-- User Management (Admin Only) -->
+            <div [ngClass]="{ 'opacity-50 pointer-events-none': !isAdmin }"
+                class="flex flex-col items-center justify-center p-6 bg-purple-100 shadow-lg rounded-xl hover:bg-purple-200 transition">
+                <mat-icon class="text-purple-500 mb-4">group</mat-icon>
+                <h3 class="text-xl font-semibold text-gray-700">User Management</h3>
+                <p class="text-gray-600 text-sm text-center">Manage user accounts and roles (Admin only).</p>
+                <button mat-raised-button color="primary" routerLink="/users-management" class="mt-4">
+                    Manage Users
+                </button>
+            </div>
+        </div>
+
+        <!-- Logout Button -->
+        <div class="text-center">
+            <button mat-raised-button color="warn" (click)="onLogout()" class="py-2 px-6 text-sm">
+                Logout
+            </button>
+        </div>
+    </div>
+</div>

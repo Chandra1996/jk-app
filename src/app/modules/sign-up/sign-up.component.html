@@ -1,0 +1,100 @@
+<div class="flex items-center justify-center min-h-screen bg-blue-50">
+    <!-- Responsive container with conditional background and shadow -->
+    <div class="w-full max-w-md p-8  bg-transparent sm:bg-white sm:shadow-lg rounded-2xl">
+      <h2 class="text-2xl font-bold text-center text-gray-700">Sign Up</h2>
+  
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="space-y-4">
+        <!-- Full Name Field -->
+        <div>
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Full Name</mat-label>
+            <mat-icon matPrefix class="text-gray-500 mr-2">person</mat-icon>
+            <input matInput formControlName="fullName" type="text" placeholder="Enter your full name">
+            <mat-error *ngIf="signupForm.get('fullName')?.hasError('required')">
+              Full name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+  
+        <!-- Phone Field -->
+        <div>
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Phone</mat-label>
+            <mat-icon matPrefix class="text-gray-500 mr-2">phone</mat-icon>
+            <input 
+              matInput 
+              formControlName="phone" 
+              type="tel" 
+              placeholder="Enter your phone number">
+            <mat-error *ngIf="signupForm.get('phone')?.hasError('required')">
+              Phone number is required
+            </mat-error>
+            <mat-error *ngIf="signupForm.get('phone')?.hasError('pattern')">
+              Enter a valid 10-digit phone number
+            </mat-error>
+          </mat-form-field>
+        </div>
+  
+        <!-- Email Field -->
+        <div>
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Email</mat-label>
+            <mat-icon matPrefix class="text-gray-500 mr-2">email</mat-icon>
+            <input matInput formControlName="email" type="email" placeholder="Enter your email">
+            <mat-error *ngIf="signupForm.get('email')?.hasError('required')">
+              Email is required
+            </mat-error>
+            <mat-error *ngIf="signupForm.get('email')?.hasError('email')">
+              Please enter a valid email
+            </mat-error>
+          </mat-form-field>
+        </div>
+  
+        <!-- Password Field -->
+        <div>
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Password</mat-label>
+            <mat-icon matPrefix class="text-gray-500 mr-2">lock</mat-icon>
+            <input 
+              matInput 
+              formControlName="password" 
+              [type]="hidePassword ? 'password' : 'text'" 
+              placeholder="Create a password">
+            <button 
+              mat-icon-button 
+              matSuffix 
+              type="button" 
+              (click)="hidePassword = !hidePassword" 
+              aria-label="Toggle password visibility">
+              <mat-icon class="text-gray-500">
+                {{ hidePassword ? 'visibility_off' : 'visibility' }}
+              </mat-icon>
+            </button>
+            <mat-error *ngIf="signupForm.get('password')?.hasError('required')">
+              Password is required
+            </mat-error>
+            <mat-error *ngIf="signupForm.get('password')?.hasError('minlength')">
+              Password must be at least 6 characters
+            </mat-error>
+          </mat-form-field>
+        </div>
+  
+        <!-- Submit Button -->
+        <div>
+          <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid ||spinner" class="w-full py-2 flex justify-center items-center ">
+            <span *ngIf="!spinner">Sign Up</span>
+            <mat-progress-spinner class="my-2 mx-auto" *ngIf="spinner" [diameter]="20" [mode]="'indeterminate'"></mat-progress-spinner>
+          </button>
+        </div>
+      </form>
+  
+      <!-- Login Link -->
+      <div class="text-center">
+        <p class="text-sm text-gray-600">
+          Already have an account? 
+          <a routerLink="/login" class="text-blue-500 hover:underline">Login</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  

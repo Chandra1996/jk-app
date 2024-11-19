@@ -1,0 +1,9 @@
+table {
+    min-width: 600px;
+}
+
+@media (max-width: 640px) {
+    table {
+        min-width: auto;
+    }
+}

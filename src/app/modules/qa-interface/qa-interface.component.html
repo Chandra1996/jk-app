@@ -1,0 +1,42 @@
+<div class="flex justify-center items-center h-screen bg-blue-50">
+    <!-- Container -->
+    <div class="w-full  max-w-4xl p-8 space-y-8 bg-transparent sm:bg-white sm:shadow-lg rounded-2xl mt-12 mb-12">
+      
+      <!-- Back Button -->
+      <div class="flex ">
+        <span class="cursor-pointer" routerLink="../">
+          <mat-icon class="text-[#3F51B5]">arrow_back</mat-icon>
+        </span>
+        <span class="text-xl font-medium text-gray-600 ml-4">Q&A Interface</span>
+      </div>
+  
+      <!-- Chat Section -->
+      <div class="bg-gray-50 p-6 rounded-lg shadow-md border text-gray-600 space-y-4 overflow-y-auto h-[400px] sm:h-[260px]  mb-4">
+        <div *ngFor="let msg of chatMessages">
+          <div *ngIf="msg.type === 'question'" class="flex justify-end">
+            <div class="max-w-[80%] bg-blue-100 text-gray-700 p-4 rounded-lg shadow-md">
+              <p class="text-sm">{{ msg.text }}</p>
+            </div>
+          </div>
+          <div *ngIf="msg.type === 'answer'" class="flex justify-start">
+            <div class="max-w-[80%] bg-gray-100 text-gray-700 p-4 rounded-lg shadow-md">
+              <p class="text-sm">{{ msg.text }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Ask Question Section -->
+      <div class="flex flex-col items-center space-x-4">
+        <mat-form-field class="w-full" appearance="outline">
+          <mat-label>Ask your question</mat-label>
+          <input matInput [(ngModel)]="question" (keyup)="enableAskButton()" [disabled]="isAsking" placeholder="Type your question..." />
+        </mat-form-field>
+  
+        <button mat-raised-button color="primary" (click)="askQuestion()" [disabled]="!question || isAsking" class="w-auto">
+          Ask
+        </button>
+      </div>
+    </div>
+  </div>
+  
