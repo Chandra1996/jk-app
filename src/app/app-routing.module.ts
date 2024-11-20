@@ -30,7 +30,7 @@ const routes: Routes = [
     canActivate: [AuthGuard,AdminGuard],
     canActivateChild: [AuthGuard,AdminGuard],
     children: [
-      { path: 'users-management', loadChildren: () => import('src/app/modules/qa-interface/qa-interface.module').then(m => m.QaInterfaceModule) },
+      { path: 'users-management', loadChildren: () => import('src/app/modules/user-management/user-management.module').then(m => m.UserManagementModule) },
     ]
   },
 ];
