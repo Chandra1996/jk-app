@@ -19,7 +19,9 @@ export class QaInterfaceComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
-    await this.getChats()
+    console.log('start');
+    
+    // await this.getChats()
   }
 
   async getChats() {

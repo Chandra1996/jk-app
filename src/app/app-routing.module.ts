@@ -22,8 +22,7 @@ const routes: Routes = [
     children: [
       { path: 'home', loadChildren: () => import('src/app/modules/home/home.module').then(m => m.HomeModule) },
       { path: 'manage-documents', loadChildren: () => import('src/app/modules/docs-management/docs-management.module').then(m => m.DocsManagementModule) },
-      { path: 'users-management', loadChildren: () => import('src/app/modules/user-management/user-management.module').then(m => m.UserManagementModule) },
-      // { path: 'ask-question', loadChildren: () => import('src/app/modules/qa-interface/qa-interface.module').then(m => m.QaInterfaceModule) },
+      { path: 'ask-question', loadChildren: () => import('src/app/modules/qa-interface/qa-interface.module').then(m => m.QaInterfaceModule) },
     ]
   },
   {
@@ -31,7 +30,7 @@ const routes: Routes = [
     canActivate: [AuthGuard,AdminGuard],
     canActivateChild: [AuthGuard,AdminGuard],
     children: [
-      { path: 'ask-question', loadChildren: () => import('src/app/modules/qa-interface/qa-interface.module').then(m => m.QaInterfaceModule) },
+      { path: 'users-management', loadChildren: () => import('src/app/modules/qa-interface/qa-interface.module').then(m => m.QaInterfaceModule) },
     ]
   },
 ];
